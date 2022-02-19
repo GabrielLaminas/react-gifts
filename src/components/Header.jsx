@@ -25,7 +25,7 @@ const Header = ({value, setValue}) => {
         <div>
           <img src={logo} alt="logoReactgif" />
         </div>
-        <Search value={value} setValue={setValue} />
+        <Search setValue={setValue} />
       </HeaderContainer>
     </SectionHeader>
   )

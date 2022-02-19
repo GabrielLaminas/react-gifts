@@ -43,9 +43,9 @@ const CopyImg = styled.img`
 const GiftList = ({ gifs, load }) => {
   //console.log('GiftsList montou')
 
-  if(load)return <Spinner bgColor="#282C34" colorEffect="#61DAFB" />
+  if(load) return <Spinner bgColor="#282C34" colorEffect="#61DAFB" />
   if(gifs === null) return null;
-
+  
   return (
     <ContainerList>
       <h1>Trending</h1>

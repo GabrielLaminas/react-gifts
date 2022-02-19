@@ -3,56 +3,70 @@ import styled from 'styled-components';
 import search from '../assets/search-icon.png';
 
 const Container = styled.div`
-  padding: 5px 4px;
   display: flex;
-  align-items: center;
   background-color: #fdfdfd;
+  overflow: hidden;
   border-radius: 4px;
 `;
 
 const InputSearch = styled.input`
-  padding: 3px;
+  padding: 6px 5px;
   color: #282C34;
   border: 0;
   outline: none;
 `;
 
 const Image = styled.img`
-  margin-left: 4px;
+  padding: 4px;
+  transition: all .2s;
+  cursor: pointer;
+  
+  &:hover{
+    background-color: #61dafb8b;
+  }
 `;
 
-const debounce = function(func, wait, immediate) {
-	var timeout;
-	return function() {
-		var context = this, args = arguments;
-		var later = function() {
-			timeout = null;
-			if (!immediate) func.apply(context, args);
-		};
-		var callNow = immediate && !timeout;
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
-		if (callNow) func.apply(context, args);
-	};
-};
-
-const Search = ({value, setValue}) => {
+const Search = ({ setValue }) => {
+  const [values, setValues] = React.useState(() => {
+    const searchLocal = 
+      window.localStorage.getItem('search') 
+      ? window.localStorage.getItem('search')
+      : ''
+    ;
+    return searchLocal;
+  });
+  
+  React.useEffect(() => {
+    const getSearch = window.localStorage.getItem('search', values);
+    setValue(getSearch);
+  }, [])
 
   function handleChange({target}){
-    const values = target.value;
-
-    if(values !== ''){
-      debounce(setValue(values), 1000);
-    }
-    else{
+    if(target.value === ''){
       setValue('');
+      window.localStorage.setItem('search', '');
+    }
+
+    setValues(target.value);
+  }
+
+  function handleClick(e){
+    e.preventDefault();
+    setValue(values);
+    window.localStorage.setItem('search', values);
+  }
+
+  function handlePress(e){
+    if((e.code === "NumpadEnter") || (e.code === "Enter")){
+      setValue(values);
+      window.localStorage.setItem('search', values);
     }
   }
 
   return (
     <Container>
-      <InputSearch type="search" onChange={handleChange} value={value} />
-      <Image src={search} alt="search icon" />
+      <InputSearch type="search" value={values} onChange={handleChange} onKeyPress={handlePress} />
+      <Image src={search} alt="search icon" onClick={handleClick} />
     </Container>
   )
 }
