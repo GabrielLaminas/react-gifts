@@ -5,9 +5,9 @@
 
 ## Screenshot
 
-![Main landing page]()
+![Main landing page](https://github.com/GabrielLaminas/react-gifts/blob/main/src/assets/images/gifts-desktop.jpg?raw=true)
 
-![Mobile landing page]()
+![Mobile landing page](https://github.com/GabrielLaminas/react-gifts/blob/main/src/assets/images/gifts-mobile.jpg?raw=true)
 
 ## Link
 
