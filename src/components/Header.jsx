@@ -12,8 +12,14 @@ const HeaderContainer = styled.div`
   margin: 0 auto;
   padding: 16px 24px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center; 
+
+  @media screen and (max-width: 480px) {
+    justify-content: center;
+    gap: 24px;
+  }
 `;
 
 const Header = ({value, setValue}) => {

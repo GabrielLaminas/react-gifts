@@ -4,9 +4,14 @@ import search from '../assets/search-icon.png';
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   background-color: #fdfdfd;
   overflow: hidden;
   border-radius: 4px;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const InputSearch = styled.input`
@@ -14,6 +19,7 @@ const InputSearch = styled.input`
   color: #282C34;
   border: 0;
   outline: none;
+  flex: 1;
 `;
 
 const Image = styled.img`

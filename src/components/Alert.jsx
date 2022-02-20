@@ -1,6 +1,17 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import sucessIcon from '../assets/check-icon.png';
+
+const showbottom = keyframes`
+  from{
+    bottom: -50px;
+    opacity: 0;
+  }
+  to{
+    bottom: 0;
+    opacity: 1;
+  }
+`
 
 const AlertContainer = styled.div`
   width: 100%;
@@ -11,13 +22,18 @@ const AlertContainer = styled.div`
   align-items: flex-start;
   justify-content: center;
   background-color: #388e3c;
+  animation: ${showbottom} .5s forwards;
 
   & > p{
     margin-left: 10px;
     color: #fdfdfd;
     font-size: 1.125rem;
-    font-weight: bold;
+    font-weight: 600;
     letter-spacing: .5px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 16px 24px;
   }
 `;
 

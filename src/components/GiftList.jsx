@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import Spinner from './Spinner';
 import shareIcon from '../assets/share-icon.png';
 import copy from "copy-to-clipboard"; 
@@ -25,9 +25,21 @@ const GridList = styled.div`
   gap: 16px;
 `;
 
+const showtop = keyframes`
+  from{
+    top: -50px;
+    opacity: 0;
+  }
+  to{
+    top: 0;
+    opacity: 1;
+  }
+`
+
 const ListGift = styled.div`
   position: relative;
   overflow: hidden;
+  animation: ${showtop} 1s forwards;
   cursor: pointer;
 
   &:hover img{
@@ -49,7 +61,6 @@ const CopyImg = styled.img`
 `;
 
 const GiftList = ({ gifs, load }) => {
-  //console.log('GiftsList montou')
   const [isCopy, setIsCopy] = React.useState(false);
 
   function copyToClipboard(text){
